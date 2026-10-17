@@ -71,22 +71,22 @@ const P = id => "https://play.google.com/store/apps/details?id=" + id;
 const ITEMS = [
   { name:"조선거상", genre:"상인 시뮬레이션", type:"게임", icon:"img/joseon.png",
     desc:"천민 어부에서 만상까지. 실제 물때와 날씨로 돌아가는 조선 상인 신분 상승 게임.",
-    status:"live", play:P("com.nexix.joseon"), ios:"https://apps.apple.com/kr/app/id6811911275" },
+    status:"live", play:P("com.nexix.joseon"), ios:"https://apps.apple.com/kr/app/id6811911275", url:"https://joseon.soody.date" },
   { name:"회귀자가 너무 많다: 12년", genre:"회귀 투자 시뮬레이션", type:"게임", icon:"img/regressors.png",
     desc:"31만 명이 동시에 회귀했다. 모두가 같은 미래를 안다면 그 답은 값이 없다 — 3분 실시간 눈치 투자.",
-    status:"live", play:P("com.nexix.regressors") },
+    status:"live", play:P("com.nexix.regressors"), url:"https://regressors.sayblackday.workers.dev" },
   { name:"2회차 회사원", genre:"회귀 직장 RPG", type:"게임", icon:"img/hoegwi.png",
     desc:"내 진짜 직장으로 다시 시작하는 회귀물. 일기토 격투, 미니게임, 익명 게시판까지.",
-    status:"live", play:P("com.nexix.hoegwi") },
+    status:"live", play:P("com.nexix.hoegwi"), url:"https://hoegwi.soody.date" },
   { name:"썸데이 — 연애 연습", genre:"대화 시뮬레이션", type:"게임", icon:"img/someday.png",
     desc:"선택지 없이 직접 써서 대화하는 연애 연습. 11개국 캐릭터 31명.",
-    status:"live", play:P("com.nexix.someday") },
+    status:"live", play:P("com.nexix.someday"), url:"https://someday.soody.date" },
   { name:"미러 — 대칭 퍼즐", genre:"두뇌 퍼즐", type:"게임", icon:"img/mirror.png",
     desc:"블록을 옮겨 대칭을 맞추는 두뇌 퍼즐. 대칭 9종, 레벨 200개, 끝없는 거울 모드.",
-    status:"live", play:P("com.nexix.mirror") },
+    status:"live", play:P("com.nexix.mirror"), url:"https://mirror.soody.date" },
   { name:"티끌모아 건물주", genre:"앱테크 · 건물 키우기", type:"게임", icon:"img/tikkeul.png",
     desc:"매일 출석·인증으로 모은 티끌로 건물을 올리는 앱테크 게임.",
-    status:"live", play:P("com.nexix.tikkeul") },
+    status:"live", play:P("com.nexix.tikkeul"), url:"https://tikkeul.sayblackday.workers.dev/intro/" },
   { name:"물음표 배틀", genre:"실시간 퀴즈", type:"게임", emoji:"❓",
     desc:"AI보다 빨리 맞히고, AI가 못 답하는 질문을 내라. 웹툰 원작 실시간 퀴즈, 8개 언어.",
     status:"web", url:"https://qbattle.soody.date" },
@@ -95,13 +95,13 @@ const ITEMS = [
     status:"web", url:"https://danji-2s9.pages.dev" },
   { name:"한국사 한 조각", genre:"교육 · 한국사", type:"앱", icon:"img/hanguksa.png",
     desc:"시대별 한국사를 한 조각씩. 짧게 읽고 퀴즈로 확인하는 한국사 공부.",
-    status:"live", play:P("com.ebs.history.edu") },
+    status:"live", play:P("com.ebs.history.edu"), url:"https://hanguksa.pages.dev" },
   { name:"한국사 능력검정 요점정리", genre:"교육 · 시험 대비", type:"앱", icon:"img/hanguksaexam.png",
     desc:"한국사능력검정시험 핵심만 시대순으로. 연표와 오답노트까지.",
-    status:"live", play:P("com.naver.history") },
+    status:"live", play:P("com.naver.history"), url:"https://hanguksa-exam.pages.dev" },
   { name:"수미네 반찬 레시피", genre:"요리 · 레시피", type:"앱", icon:"img/banchan.png",
     desc:"반찬 60가지 레시피와 영양성분, 한 상 균형 추천.",
-    status:"live", play:P("com.naver.soomiclass") },
+    status:"live", play:P("com.naver.soomiclass"), url:"https://banchan60.banchan.workers.dev" },
   { name:"사주 인연노트", genre:"운세 · 관계", type:"앱", icon:"img/saju.png",
     desc:"천문 계산 만세력으로 보는 나와 내 사람들의 사주와 인연.",
     status:"review", play:P("com.naver.saju"), url:"https://saju.soody.date" },
@@ -110,7 +110,7 @@ const ITEMS = [
     status:"live", play:P("com.payqube.sample"), url:"https://naebohum.soody.date" },
   { name:"중고 팔기 정리왕", genre:"생활 · 중고거래", type:"앱", icon:"img/jungriwang.png",
     desc:"사진 찍으면 중고 시세를 찾아 판매글까지 정리해 주는 앱.",
-    status:"live", play:P("com.nexix.jungriwang") },
+    status:"live", play:P("com.nexix.jungriwang"), url:"https://jjikpa.pages.dev" },
   { name:"DashCam Viewer", genre:"도구 · 블랙박스", type:"앱", icon:"img/dashcam.png",
     desc:"전용 앱 없이 폰으로 보는 블랙박스 뷰어. 여러 블랙박스 자동 감지.",
     status:"live", play:P("com.nexix.dashcam") },
@@ -128,9 +128,9 @@ let cur = "전체";
 const card = g => {
   const ico = g.icon ? `<img class="ico" src="${g.icon}" alt="" loading="lazy">` : `<div class="ico" aria-hidden="true">${g.emoji}</div>`;
   const st = STATUS[g.status];
-  const plat = [g.play && "Android", g.ios && "iOS", g.url && "웹"].filter(Boolean);
+  const plat = [g.play && "Android", g.ios && "iOS", !g.play && g.url && "웹"].filter(Boolean);
   const btn = [
-    g.url  && `<a class="btn web"  href="${g.url}"  target="_blank" rel="noopener">${g.play ? "홈페이지" : "바로 하기"}</a>`,
+    g.url  && `<a class="btn web"  href="${g.url}"  target="_blank" rel="noopener">${g.play ? "소개 페이지" : "바로 하기"}</a>`,
     g.play && `<a class="btn play" href="${g.play}" target="_blank" rel="noopener">Android</a>`,
     g.ios  && `<a class="btn ios"  href="${g.ios}"  target="_blank" rel="noopener">iOS</a>`,
   ].filter(Boolean).join("");
@@ -144,7 +144,7 @@ const card = g => {
 
 function render(){
   $("#filters").innerHTML = tabs.map(t => `<button class="${t===cur?"on":""}" data-t="${t}">${t}</button>`).join("");
-  const list = ITEMS.filter(g => cur==="전체" || (cur==="웹에서 바로" ? !!g.url : g.type===cur));
+  const list = ITEMS.filter(g => cur==="전체" || (cur==="웹에서 바로" ? (g.status==="web"||!g.play) : g.type===cur));
   $("#grid").innerHTML = list.map(card).join("");
 }
 $("#filters").addEventListener("click", e => { const t = e.target.dataset.t; if (t){ cur = t; render(); } });
