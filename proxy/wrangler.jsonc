@@ -1,0 +1,6 @@
+{
+  "name": "nexix-games",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "games.soody.date", "custom_domain": true }]
+}
