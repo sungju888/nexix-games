@@ -66,7 +66,7 @@ footer a{color:var(--accent)}
 
 <script>
 /* ▼ 새 게임·앱은 여기에 한 줄만 추가하면 됩니다.
-   type: "게임" | "앱"   status: live(출시) | review(심사 중) | web(웹 전용) */
+   type: "게임" | "앱" | "현규"   status: live(출시) | review(심사 중) | web(웹 전용) */
 const P = id => "https://play.google.com/store/apps/details?id=" + id;
 const ITEMS = [
   { name:"조선거상", genre:"상인 시뮬레이션", type:"게임", icon:"img/joseon.png",
@@ -117,12 +117,24 @@ const ITEMS = [
   { name:"Soody", genre:"쇼핑 · 핸드메이드 주얼리", type:"앱", icon:"img/soody.png",
     desc:"말레이시아·싱가포르 핸드메이드 주얼리 숍 Soody 공식 앱.",
     status:"live", play:P("com.nexix.soody"), url:"https://soody.shop" },
+  { name:"현규의 두뇌게임", genre:"두뇌게임 8종", type:"현규", emoji:"🧩",
+    desc:"틱택토·사목·오목·리버시·선잇기·길경주·기억력·사탕. 컴퓨터와 하거나 둘이서, 난이도 3단계.",
+    status:"web", url:"https://hyungyu-games.pages.dev" },
+  { name:"현규의 주판교실", genre:"주판 · 셈하기", type:"현규", emoji:"🧮",
+    desc:"만 6세 눈높이 주판 단계별 학습 13단계와 놀이터.",
+    status:"web", url:"https://hyungyu-abacus.pages.dev" },
+  { name:"소리로 읽는 영어", genre:"파닉스 · 영어 읽기", type:"현규", emoji:"🔤",
+    desc:"영국식 발음으로 소리 내어 읽고 듣는 파닉스 연습. (가족용 잠금)",
+    status:"web", url:"https://hyungyu-phonics.sayblackday.workers.dev" },
+  { name:"현규의 메자스타", genre:"포켓몬 메자스타 도감", type:"현규", emoji:"🎴",
+    desc:"메자스타 도감·태그 인식·대진 추천. (가족용 잠금)",
+    status:"web", url:"https://hyungyu-mezastar.pages.dev" },
 ];
 
 const STATUS = { live:["출시","live"], review:["심사 중","review"], web:["웹에서 바로","web"] };
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const tabs = ["전체","게임","앱","웹에서 바로"];
+const tabs = ["전체","게임","앱","웹에서 바로","현규"];
 let cur = "전체";
 
 const card = g => {
@@ -144,7 +156,7 @@ const card = g => {
 
 function render(){
   $("#filters").innerHTML = tabs.map(t => `<button class="${t===cur?"on":""}" data-t="${t}">${t}</button>`).join("");
-  const list = ITEMS.filter(g => cur==="전체" || (cur==="웹에서 바로" ? (g.status==="web"||!g.play) : g.type===cur));
+  const list = ITEMS.filter(g => cur==="전체" || (cur==="웹에서 바로" ? (g.type!=="현규" && (g.status==="web"||!g.play)) : g.type===cur));
   $("#grid").innerHTML = list.map(card).join("");
 }
 $("#filters").addEventListener("click", e => { const t = e.target.dataset.t; if (t){ cur = t; render(); } });
